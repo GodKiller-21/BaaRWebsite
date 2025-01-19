@@ -1,0 +1,269 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Main content */
+main {
+    min-height: 100%; /* Ensures content takes up at least the full screen height */
+    padding-bottom: 100px; /* Space for footer when there's not much content */
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0.5rem;
+    position: relative;
+    text-align: center;
+}
+
+header h1 {
+    font-family:  'Roboto', Arial, sans-serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+}
+
+/* Full-Width Image */
+.full-width-image {
+    width: 100%; /* Spans the full width of the page */
+    height: 500px; /* Maintains aspect ratio */
+    display: block; /* Removes any extra spacing */
+    margin: 0;
+    padding-bottom: 5rem;
+}
+
+/* Sticky Banner */
+.sticky-banner {
+    position: fixed; /* Keeps the banner fixed at the bottom */
+    bottom: 0; /* Aligns it to the bottom of the screen */
+    width: 100%; /* Spans the full width of the screen */
+    background-color: #444; /* Background color for the banner */
+    color: #fff; /* Text color */
+    padding: 1rem; /* Padding for a better appearance */
+    text-align: center; /* Center the content */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Adds a slight shadow for a modern look */
+    z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
+.sticky-banner a {
+    color: #ffcc00; /* Highlight the link in the banner */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.sticky-banner a:hover {
+    text-decoration: none; /* Optional hover effect for the link */
+}
+
+/* Hidden state for the banner */
+.sticky-banner.hidden {
+    opacity: 0;
+    pointer-events: none; /* Prevents clicks when hidden */
+}
+
+/* Image Grid Section */
+#image-deck {
+    display: flex;
+    flex-direction: column; /* Stack the images vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* First Image (the main image) */
+.first-image {
+    width: 200px; /* Adjust the width to your preference */
+    height: 200px;
+    margin-bottom: 20px; /* Space between the first image and the fan */
+    text-align: center;
+}
+
+.first-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.first-image p {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Card Deck Container */
+.deck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+    margin-top: 20px; /* Additional space for the fan */
+}
+
+/* Individual Cards */
+.card {
+    width: 200px;
+    height: 200px;
+    margin: 0 10px;
+    position: absolute;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    text-align: center;
+    transform-origin: center center;
+    z-index: 1;
+    opacity: 0; /* Start with cards hidden */
+}
+
+/* Card Images */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Card Captions */
+.card p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Middle Card Visible */
+.card:nth-child(2) {
+    opacity: 1; /* The middle card is always visible */
+    z-index: 3; /* Keep it in front initially */
+}
+
+/* Initial Stacked Position (Cards on top of each other) */
+.card:nth-child(1) {
+    transform: translateX(0);
+    z-index: 2; /* Stack this card slightly behind */
+}
+
+.card:nth-child(3) {
+    transform: translateX(0);
+    z-index: 1; /* Stack this card behind the others */
+}
+
+/* Hover Effect to Fan Out */
+#image-deck:hover .deck {
+    transform: rotateY(15deg);
+}
+
+#image-deck:hover .card {
+    opacity: 1; /* Make all cards visible on hover */
+}
+
+#image-deck:hover .card:nth-child(1) {
+    transform: rotateY(-15deg) translateX(-100px);
+    z-index: 2; /* Bring the first card slightly forward */
+}
+
+#image-deck:hover .card:nth-child(2) {
+    transform: rotateY(0deg) translateX(0);
+    z-index: 3; /* Keep the middle card in the front */
+}
+
+#image-deck:hover .card:nth-child(3) {
+    transform: rotateY(15deg) translateX(100px);
+    z-index: 1; /* Last card moves behind */
+}
+
+/* Button Styling for prducts button */
+.button-container {
+    margin-top: 80px; /* Space between the card fan and the button */
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007BFF; /* Blue color */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn:active {
+    background-color: #00408a; /* Even darker blue on active click */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+    nav {
+        display: none; /* Hide nav links by default on mobile */
+        flex-direction: column;
+        align-items: flex-start;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    nav a {
+        margin: 0.5rem 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    nav.show {
+        display: flex; /* Show nav when toggled */
+    }
+}
+
